@@ -5,7 +5,7 @@ import Square from "./Square";
 const arr = [0, 1, 2, 3, 4];
 
 const Board = () => {
-  const knightPosition = useState([2, 2]);
+  const [knightPosition, setKnightPosition] = useState([2, 2]);
 
   return (
     <div
@@ -40,9 +40,13 @@ const Board = () => {
                     ? "black"
                     : "black",
               }}
+              onClick={() => {
+                setKnightPosition([indexX,indexY])
+              }}
             >
-              {knightPosition[0][0] === indexX &&
-                knightPosition[0][1] === indexY && <Knight />}
+              {knightPosition[0] === indexX && knightPosition[1] === indexY && (
+                <Knight />
+              )}
             </div>
           ))}
         </div>
