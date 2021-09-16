@@ -38,7 +38,6 @@ const Board = () => {
               indexY={indexY}
               knightPosition={knightPosition}
               callbackSetKnightPosition={(e) => {
-                alert(`"knight moved to x:${e[0]}, y:${e[1]}`)  
                 setKnightPosition(e)}}
             />
           ))}
