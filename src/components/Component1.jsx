@@ -1,7 +1,7 @@
 import { ItemTypes } from "../utils";
 import { useDrag } from "react-dnd";
 
-const Component1 = () => {
+const Knight = () => {
   //the result array contains props as first item(contains props I collected from the drag-and-drop system)
   //and a ref as 2nd item (look line 16)
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -23,7 +23,7 @@ const Component1 = () => {
         fontSize: "100px",
         fontWeight: "bold",
         cursor: "move",
-        color:"white"
+        color:"gray"
       }}
     >
       ♘
@@ -31,4 +31,4 @@ const Component1 = () => {
   );
 };
 
-export default Component1;
+export default Knight;
