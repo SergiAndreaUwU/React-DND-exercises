@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../utils";
+import BoardSquare from "./BoardSquare";
 import Knight from "./Component1";
 import Square from "./Square";
 
 const arr = [0, 1, 2, 3, 4];
 
 const Board = () => {
-  const [knightPosition, setKnightPosition] = useState([2, 2]);
+  let x = 2;
+  let y = 2;
+  const [knightPosition, setKnightPosition] = useState([x, y]);
 
   return (
     <div
@@ -27,27 +32,15 @@ const Board = () => {
           }}
         >
           {arr.map((el, indexY) => (
-            <div
-              key={indexY}
-              style={{
-                height: "20%",
-                backgroundColor:
-                  indexY % 2 === 0 && indexX % 2 === 0
-                    ? "white"
-                    : indexY % 2 === 1 && indexX % 2 === 1
-                    ? "white"
-                    : indexY % 2 === 0 && indexX % 2 === 1
-                    ? "black"
-                    : "black",
-              }}
-              onClick={() => {
-                setKnightPosition([indexX,indexY])
-              }}
-            >
-              {knightPosition[0] === indexX && knightPosition[1] === indexY && (
-                <Knight />
-              )}
-            </div>
+            <BoardSquare
+              key={`${indexX},${indexY}`}
+              indexX={indexX}
+              indexY={indexY}
+              knightPosition={knightPosition}
+              callbackSetKnightPosition={(e) => {
+                alert(`"knight moved to x:${e[0]}, y:${e[1]}`)  
+                setKnightPosition(e)}}
+            />
           ))}
         </div>
       ))}
